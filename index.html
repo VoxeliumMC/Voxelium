@@ -1,43 +1,168 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Vote für Voxelium</title>
+  <meta name="description" content="Unterstütze den Voxelium Minecraft-Server mit deinem täglichen Vote. Hier findest du alle Vote-Links auf einen Blick." />
+  <meta property="og:title" content="Vote für Voxelium" />
+  <meta property="og:description" content="Unterstütze den Voxelium Minecraft-Server mit deinem täglichen Vote." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://vote.voxelium.de" />
+  <meta name="theme-color" content="#00c3ff" />
+
   <style>
-    body {
-      background: #0d1117;
-      color: #fff;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding-top: 100px;
+    :root{
+      --bg:#0b0f14;
+      --panel:#0f151c;
+      --panel2:#121a22;
+      --accent:#00c3ff; /* &3 Voxelium-Türkis */
+      --text:#e8f1f8;
+      --muted:#9fb3c6;
+      --btn:#18222c;
+      --btnHover:#1f2b36;
+      --ring: rgba(0,195,255,.35);
     }
-    h1 {
-      color: #00c3ff;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; background:
+        radial-gradient(1200px 600px at 10% -10%, #0e1620 0%, transparent 60%),
+        radial-gradient(1200px 600px at 110% 110%, #0e1620 0%, transparent 60%),
+        var(--bg);
+      color:var(--text); font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;
+      display:flex; align-items:center; justify-content:center; padding:32px;
     }
-    a {
-      display: block;
-      margin: 20px auto;
-      padding: 15px 25px;
-      background: #222;
-      border-radius: 8px;
-      text-decoration: none;
-      color: #fff;
-      font-size: 18px;
-      width: 300px;
-      transition: background 0.3s;
+
+    .card{
+      width:min(820px, 100%);
+      background:linear-gradient(180deg,var(--panel),var(--panel2));
+      border:1px solid #0f202a;
+      border-radius:24px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.45), 0 0 0 1px rgba(255,255,255,.03) inset;
+      overflow:hidden;
+      position:relative;
     }
-    a:hover {
-      background: #00c3ff;
-      color: #000;
+
+    /* zarte Grid-Optik im Hintergrund */
+    .card::before{
+      content:""; position:absolute; inset:0; pointer-events:none;
+      background:
+        linear-gradient(to right, rgba(255,255,255,.04) 1px, transparent 1px) 0 0/32px 32px,
+        linear-gradient(to bottom, rgba(255,255,255,.04) 1px, transparent 1px) 0 0/32px 32px;
+      mask: radial-gradient(500px 300px at 50% 20%, #000 20%, transparent 70%);
     }
+
+    header{
+      padding:28px 28px 12px;
+      display:flex; gap:18px; align-items:center; justify-content:center;
+      text-align:center;
+    }
+
+    /* Inline-Logo (SVG) */
+    .logo{
+      width:72px; height:72px; flex:0 0 auto;
+      filter: drop-shadow(0 4px 18px var(--ring));
+    }
+    h1{
+      margin:0; font-weight:800; letter-spacing:.3px;
+      font-size: clamp(22px, 3vw, 28px);
+      background: linear-gradient(180deg, #e8f7ff 0%, #b7eaff 60%, #7fdcff 100%);
+      -webkit-background-clip: text; background-clip:text; color:transparent;
+      text-shadow: 0 0 0 rgba(0,0,0,0);
+    }
+    .subtitle{
+      margin:6px 0 0; color:var(--muted); font-size:14px;
+    }
+
+    .content{ padding:8px 28px 28px; }
+
+    .btns{
+      display:grid; gap:14px;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width:680px){
+      .btns{ grid-template-columns: 1fr 1fr 1fr; }
+    }
+
+    a.vote{
+      display:flex; align-items:center; justify-content:center; gap:10px;
+      text-decoration:none; color:var(--text);
+      padding:16px 18px; border-radius:14px;
+      background:linear-gradient(180deg,var(--btn),var(--btnHover));
+      border:1px solid #17303d;
+      transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+      position:relative; isolation:isolate;
+    }
+    a.vote::after{
+      content:""; position:absolute; inset:-1px; border-radius:14px;
+      background: radial-gradient(300px 100px at 50% 0%, var(--ring), transparent 70%);
+      opacity:.3; z-index:-1;
+    }
+    a.vote:hover{
+      transform: translateY(-2px);
+      border-color:#24546a;
+      box-shadow: 0 10px 26px rgba(0,195,255,.12), 0 0 0 1px rgba(0,195,255,.15) inset;
+    }
+    .vote .tag{
+      font-size:12px; line-height:1; padding:6px 8px; border-radius:999px;
+      background:#0e1a22; border:1px solid #17303d; color:#88dfff;
+    }
+    .vote .label{
+      font-weight:700; letter-spacing:.2px; white-space:nowrap;
+    }
+
+    footer{
+      padding:16px 22px 24px; text-align:center; color:var(--muted); font-size:12px;
+    }
+    .small{
+      display:block; margin-top:6px; opacity:.8;
+    }
+    .accent{ color:var(--accent); font-weight:700; }
   </style>
 </head>
 <body>
-  <h1>Vote für Voxelium</h1>
-  <p>Danke für deine Unterstützung!</p>
-  
-  <a href="https://minecraft-server.eu/server/index/234F9" target="_blank">Vote-Link 1</a>
-  <a href="https://minecraftlist.org/server/33812" target="_blank">Vote-Link 2</a>
-  <a href="https://www.minecraft-serverlist.net/vote/59554" target="_blank">Vote-Link 3</a>
+  <main class="card" role="main" aria-labelledby="title">
+    <header>
+      <!-- Pixeliger Voxel-Kubus in &3 -->
+      <svg class="logo" viewBox="0 0 64 64" aria-hidden="true">
+        <defs>
+          <linearGradient id="g" x1="0" x2="1">
+            <stop offset="0" stop-color="#00c3ff"/>
+            <stop offset="1" stop-color="#68e0ff"/>
+          </linearGradient>
+        </defs>
+        <path d="M32 4 8 16v24l24 12 24-12V16L32 4z" fill="url(#g)"/>
+        <path d="M8 16l24 12v24L8 40V16z" fill="#0ea4c7" opacity=".35"/>
+        <path d="M56 16L32 28v24l24-12V16z" fill="#87e8ff" opacity=".25"/>
+      </svg>
+      <div>
+        <h1 id="title">Vote für <span class="accent">Voxelium</span></h1>
+        <p class="subtitle">Dein täglicher Vote unterstützt unseren Server – danke! 💙</p>
+      </div>
+    </header>
+
+    <section class="content" aria-label="Vote-Links">
+      <div class="btns">
+        <a class="vote" href="https://minecraft-server.eu/server/index/234F9" target="_blank" rel="noopener noreferrer">
+          <span class="tag">#1</span>
+          <span class="label">minecraft-server.eu</span>
+        </a>
+        <a class="vote" href="https://minecraftlist.org/server/33812" target="_blank" rel="noopener noreferrer">
+          <span class="tag">#2</span>
+          <span class="label">minecraftlist.org</span>
+        </a>
+        <a class="vote" href="https://www.minecraft-serverlist.net/vote/59554" target="_blank" rel="noopener noreferrer">
+          <span class="tag">#3</span>
+          <span class="label">minecraft-serverlist.net</span>
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      Voten funktioniert täglich – idealerweise alle drei Seiten nacheinander öffnen.
+      <span class="small">Probleme? Tritt unserem Discord bei: <strong>dc.voxelium.de</strong></span>
+    </footer>
+  </main>
 </body>
 </html>
